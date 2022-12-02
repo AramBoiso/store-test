@@ -11,15 +11,15 @@ const OrderSchema = {
     type: DataTypes.INTEGER
   },
   total: {
-    type: DataTypes.FLOAT,
+    type: DataTypes.DECIMAL(10,2),
     allowNull: true,
   },
   subtotal: {
-    type: DataTypes.FLOAT,
+    type: DataTypes.DECIMAL(10,2),
     allowNull: true,
   },
   discount: {
-    type: DataTypes.FLOAT,
+    type: DataTypes.DECIMAL(10,2),
     allowNull: true,
   },
   customerId: {
