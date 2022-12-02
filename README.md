@@ -6,8 +6,9 @@
 ---
 
 **Notes**:
- -  Create file `.env`	on root dir and put the environment variables.
+ - Create file `.env`	on root dir and put the environment variables.
  - Change  database config of `docker-compose` file.
+ - When create a customer, change email and password (credentials) of the order.spec file for that tests     worked
 ---
 
 **Environment Variables**
