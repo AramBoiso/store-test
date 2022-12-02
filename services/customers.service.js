@@ -24,6 +24,7 @@ class CustomerService {
     const customer = await models.Customer.create(data, {
       include: ['user']
     });
+    delete customer.dataValues.user.dataValues.password;
     return customer;
   }
 

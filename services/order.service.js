@@ -49,10 +49,10 @@ class OrderService {
       product = products.find(product => product.id == item.productId);
       product.amount += item.amount;
 
-      await models.OrderProduct.create({
-       ...item,
-       orderId: order.id
-      });
+      // await models.OrderProduct.create({
+      //  ...item,
+      //  orderId: order.id
+      // });
     }
 
     //Algoritm of discount
@@ -68,9 +68,10 @@ class OrderService {
       }
 
       if(product.code == "TSHIRT"){
-        if(product.amount >= 3)
+        if(product.amount >= 3){
           total += (product.price * product.amount) - product.amount
           continue;
+        }
       }
 
       total += product.price * product.amount;

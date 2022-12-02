@@ -2,6 +2,10 @@ const request = require('supertest');
 const app = require('../app');
 
 let testServer;
+let credentials = {
+  email: 'admin@admin.com',
+  password: 'pass2022'
+}
 
 beforeAll(() => {
   testServer = app.listen(5000);
@@ -14,10 +18,7 @@ afterAll((done) => {
 describe('POST /api/v1/orders', () => {
     it('Order without promotion', async () => {
         const login = await request(app).post('/api/v1/auth/login')
-            .send({
-                email: 'gloria@gmail.com',
-                password: 'qwerty123'
-            });
+            .send(credentials);
 
         const token = login.body.token
 
@@ -44,10 +45,7 @@ describe('POST /api/v1/orders', () => {
 describe('POST /api/v1/orders', () => {
     it('Order with promotion 2x1 in PANTS', async () => {
         const login = await request(app).post('/api/v1/auth/login')
-            .send({
-                email: 'gloria@gmail.com',
-                password: 'qwerty123'
-            });
+          .send(credentials);
 
         const token = login.body.token
 
@@ -63,8 +61,8 @@ describe('POST /api/v1/orders', () => {
       expect(response.error).toBe(false);
       expect(response.status).toBe(201);
       expect(response.body).not.toBeNull();
-      expect(response.body.order.subtotal).toBeCloseTo(30);
-      expect(response.body.order.total).toBeCloseTo(25);
+      expect(response.body.order.subtotal).toBe(30);
+      expect(response.body.order.total).toBe(25);
       expect(response.body.order.discount).toBe(5);
     
   });
@@ -73,10 +71,7 @@ describe('POST /api/v1/orders', () => {
 describe('POST /api/v1/orders', () => {
     it('Order with promotion 2x1 in PANTS', async () => {
         const login = await request(app).post('/api/v1/auth/login')
-            .send({
-                email: 'gloria@gmail.com',
-                password: 'qwerty123'
-            });
+          .send(credentials);
 
         const token = login.body.token
 
@@ -92,8 +87,8 @@ describe('POST /api/v1/orders', () => {
       expect(response.error).toBe(false);
       expect(response.status).toBe(201);
       expect(response.body).not.toBeNull();
-      expect(response.body.order.subtotal).toBeCloseTo(85);
-      expect(response.body.order.total).toBeCloseTo(81);
+      expect(response.body.order.subtotal).toBe(85);
+      expect(response.body.order.total).toBe(81);
       expect(response.body.order.discount).toBe(4);
     
   });
@@ -102,10 +97,7 @@ describe('POST /api/v1/orders', () => {
 describe('POST /api/v1/orders', () => {
     it('Order with promotion 2x1 in PANTS', async () => {
         const login = await request(app).post('/api/v1/auth/login')
-            .send({
-                email: 'gloria@gmail.com',
-                password: 'qwerty123'
-            });
+          .send(credentials);
 
         const token = login.body.token
 
